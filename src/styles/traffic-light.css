@@ -7,15 +7,16 @@
 
 .light {
     border-radius: 50%;
+    margin: 5px;
     width: 100px;
     height: 100px;
-    opacity: 0.3; /* Luces apagadas por defecto */
+    opacity: 0.3;
     transition: opacity 0.3s ease, box-shadow 0.3s ease;
 }
 
 .light.active {
-    opacity: 1; /* Luz encendida */
-    box-shadow: 0 0 20px 5px currentColor; /* Efecto de brillo */
+    opacity: 1; 
+    box-shadow: 0 0 20px 5px currentColor; 
 }
 
 .red {
