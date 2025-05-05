@@ -5,13 +5,15 @@ import "../../styles/traffic-light.css";
 const TrafficLight = () => {
   const [activeLight, setActiveLight] = useState("red");
 
-    useEffect(() => {
+  const changeLight = (prevLight) => {
+    if (prevLight === "red") return "orange";
+    if (prevLight === "orange") return "green";
+    return "red";
+  };
+
+  useEffect(() => {
     const interval = setInterval(() => {
-      setActiveLight((prevLight) => {
-        if (prevLight === "red") return "orange";
-        if (prevLight === "orange") return "green";
-        return "red";
-      });
+      setActiveLight((prevLight) => changeLight(prevLight));
     }, 5000);
 
     return () => clearInterval(interval);
@@ -29,14 +31,9 @@ const TrafficLight = () => {
         <div
           className={`green light ${activeLight === "green" ? "active" : ""}`}
         ></div>
+
         <button
-          onClick={() => {
-            setActiveLight((prevLight) => {
-              if (prevLight === "red") return "orange";
-              if (prevLight === "orange") return "green";
-              return "red";
-            });
-          }}
+          onClick={() => setActiveLight((prevLight) => changeLight(prevLight))}
           type="button"
           className="btn btn-outline-light my-2"
         >
