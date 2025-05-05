@@ -4,24 +4,26 @@ import "../../styles/traffic-light.css";
 
 const TrafficLight = () => {
   const [activeLight, setActiveLight] = useState("red");
+  const [purpleLight, setPurpleLight] = useState(false);
 
   const changeLight = (prevLight) => {
     if (prevLight === "red") return "orange";
     if (prevLight === "orange") return "green";
+    if (purpleLight === true && (prevLight === "green")) return "purple";    
     return "red";
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveLight((prevLight) => changeLight(prevLight));
-    }, 5000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="position-relative">
-      <div className="traffic-light position-absolute start-50 translate-middle-x">
+      <div className="traffic-light position-absolute start-50 translate-middle-x d-flex flex-column">
         <div
           className={`red light ${activeLight === "red" ? "active" : ""}`}
         ></div>
@@ -31,6 +33,7 @@ const TrafficLight = () => {
         <div
           className={`green light ${activeLight === "green" ? "active" : ""}`}
         ></div>
+        {purpleLight && <div className={`purple light ${activeLight === "purple" ? "active" : ""}`}></div>}
 
         <button
           onClick={() => setActiveLight((prevLight) => changeLight(prevLight))}
@@ -38,6 +41,14 @@ const TrafficLight = () => {
           className="btn btn-outline-light my-2"
         >
           Change state
+        </button>
+
+        <button
+          onClick={() => setPurpleLight(!purpleLight)}
+          type="button"
+          className="btn btn-outline-light my-2"
+        >
+          Add purple
         </button>
       </div>
     </div>
