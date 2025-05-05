@@ -1,0 +1,31 @@
+.traffic-light {
+    border: 2px;
+    border-color: black;
+    background: black;
+    padding: 10px;
+}
+
+.light {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    opacity: 0.3; /* Luces apagadas por defecto */
+    transition: opacity 0.3s ease, box-shadow 0.3s ease;
+}
+
+.light.active {
+    opacity: 1; /* Luz encendida */
+    box-shadow: 0 0 20px 5px currentColor; /* Efecto de brillo */
+}
+
+.red {
+    background: red;
+}
+
+.orange {
+    background: orange;
+}
+
+.green {
+    background: green;
+}
