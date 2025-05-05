@@ -9,7 +9,7 @@ const TrafficLight = () => {
   const changeLight = (prevLight) => {
     if (prevLight === "red") return "orange";
     if (prevLight === "orange") return "green";
-    if (purpleLight === true && (prevLight === "green")) return "purple";    
+    if ((purpleLight === true) && (prevLight === "green")) return "purple";    
     return "red";
   };
 
